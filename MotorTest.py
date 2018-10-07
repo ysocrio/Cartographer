@@ -28,5 +28,7 @@ userInput = input("Press Enter To Start Test")
   #for loop cycles down values
 #for loop end
 
+#release pi processes
+pi.stop()
 #stop the pigpio daemon
 os.system("sudo killall pigpiod")
