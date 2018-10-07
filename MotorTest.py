@@ -1,6 +1,9 @@
 #written for Python 3 running on Raspberry Pi
 #turns on motors
 
+#start pigpio daemon
+os.system("sudo pigpiod")
+
 #libraries used
 import pigpio           #GPIO Daemon/library that controls GPIO (need to install/run the daemon first)
 from time import sleep  #handles sleep
@@ -24,3 +27,6 @@ userInput = input("Press Enter To Start Test")
   #for loop cycles up values
   #for loop cycles down values
 #for loop end
+
+#stop the pigpio daemon
+os.system("sudo killall pigpiod")
