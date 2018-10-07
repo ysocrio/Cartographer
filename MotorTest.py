@@ -32,7 +32,7 @@ Mypi.set_mode(Motor1RightDir, OUTPUT)
 Mypi.set_mode(Motor2RightEn, OUTPUT)
 Mypi.set_mode(Motor2RightDir, OUTPUT)
 
-#sets range for pwm to 0-1000
+#sets range for pwm to 0-100
 Mypi.set_PWM_range(Motor1LeftEn, 100)
 Mypi.set_PWM_range(Motor2LeftEn, 100)
 Mypi.set_PWM_range(Motor1RightEn, 100)
