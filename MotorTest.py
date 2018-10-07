@@ -2,8 +2,10 @@
 #turns on motors
 
 #libraries used
-import gpiozero         #handles GPIO #use pigpio instead
+import pigpio           #GPIO Daemon/library that controls GPIO (need to install/run the daemon first)
 from time import sleep  #handles sleep
+
+MyPi = pigpio.pi()  #create an instance of the pi class called MyPi, MyPi will represent our rapsberrypi
 
 incrementDelay = .1     #unit is in seconds, delay between each increment/decrement
 Motor1LeftEn = 12
