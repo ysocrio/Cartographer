@@ -79,11 +79,6 @@ for currentDuty in range(100, 0):
   Mypi.set_PWM_dutycycle(Motor2RightEn,currentDuty)
   time.sleep(incrementTime)
 
-#for loop start cycles through each motor
-  #for loop cycles up values
-  #for loop cycles down values
-#for loop end
-
 #release pi processes
 Mypi.stop()
 #stop the pigpio daemon
