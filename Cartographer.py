@@ -1,5 +1,6 @@
 #Top Level
 os.system("sudo pigpiod")
-import control.py
-import motor.py
-import sense.py
+import pigpio
+import control
+import motor
+import sense
