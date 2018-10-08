@@ -16,4 +16,6 @@ class Motor:
       gpioPi.write(motorDirection,1)
       gpioPi.set_PWM_dutycycle(motorEnable,signedSpeed)
     ele:
+      gpioPi.write(motorDirection,0)
+      gpioPi.set_PWM_dutycycle(motorEnable,abs(signedSpeed))
       
