@@ -1,7 +1,7 @@
 class Motor:
   """A class responsible for defining and controlling motors"""
   def __init__(self, pigpioObject, motorEnable, motorDirection, pwmRange, pwmFreq):
-    gpioPi = pigpioObject
+    self.gpioPi = pigpioObject
     #set motor enable/direction to outputs
     gpioPi.set_mode(motorEnable, OUTPUT)
     gpioPi.set_mode(motorDirection, OUTPUT)
