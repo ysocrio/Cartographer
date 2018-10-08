@@ -15,7 +15,7 @@ class Motor:
     if signedSpeed >= 0:
       gpioPi.write(motorDirection,1)
       gpioPi.set_PWM_dutycycle(motorEnable,signedSpeed)
-    ele:
+    else:
       gpioPi.write(motorDirection,0)
       gpioPi.set_PWM_dutycycle(motorEnable,abs(signedSpeed))
  class TankChasis:
