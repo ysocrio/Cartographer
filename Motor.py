@@ -20,7 +20,7 @@ class Motor:
       gpioPi.set_PWM_dutycycle(motorEnable,abs(signedSpeed))
  class TankChasis:
   """A class that creates and controls four motors"""
-  def __init__(self, pigpioObject, motorArray, pwmRange, pwmFreq):
+  def __init__(self, pigpioObject, motorPinsArray, pwmRange, pwmFreq):
     FrontLeftMotor = Motor(pigpioObject, motorArray[0][0], motorArray[0][1], pwmRange, pwmFreq) 
     BackLeftMotor = Motor(pigpioObject, motorArray[1][0], motorArray[1][1], pwmRange, pwmFreq) 
     FrontRightMotor = Motor(pigpioObject, motorArray[2][0], motorArray[2][1], pwmRange, pwmFreq) 
