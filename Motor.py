@@ -19,4 +19,5 @@ class Motor:
       gpioPi.write(motorDirection,0)
       gpioPi.set_PWM_dutycycle(motorEnable,abs(signedSpeed))
  class TankMix:
-  
+  """A class that creates and controls four motors"""
+  def __init__(self, pigpioObject, motorEnable, )
