@@ -21,8 +21,8 @@ class Motor:
  class TankChasis:
   """A class that creates and controls four motors"""
   def __init__(self, pigpioObject, motorArray, pwmRange, pwmFreq):
-    FrontLeftMotor = Motor(pigpioObject, motorArray[1][1], motorArray[1][2], pwmRange, pwmFreq) 
-    BackLeftMotor = Motor(pigpioObject, motorArray[2][1], motorArray[2][2], pwmRange, pwmFreq) 
-    FrontRightMotor = Motor(pigpioObject, motorArray[3][1], motorArray[3][2], pwmRange, pwmFreq) 
-    BackRightMotor = Motor(pigpioObject, motorArray[4][1], motorArray[4][2], pwmRange, pwmFreq)
+    FrontLeftMotor = Motor(pigpioObject, motorArray[0][0], motorArray[0][1], pwmRange, pwmFreq) 
+    BackLeftMotor = Motor(pigpioObject, motorArray[1][0], motorArray[1][1], pwmRange, pwmFreq) 
+    FrontRightMotor = Motor(pigpioObject, motorArray[2][0], motorArray[2][1], pwmRange, pwmFreq) 
+    BackRightMotor = Motor(pigpioObject, motorArray[3][0], motorArray[3][1], pwmRange, pwmFreq)
     
