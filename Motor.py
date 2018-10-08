@@ -18,4 +18,5 @@ class Motor:
     ele:
       gpioPi.write(motorDirection,0)
       gpioPi.set_PWM_dutycycle(motorEnable,abs(signedSpeed))
-      
+ class TankMix:
+  
