@@ -11,3 +11,9 @@ class Motor:
     #set PWM Freq
     gpioPi.set_PWM_frequency(motorEnable, pwmFreq)
     gpioPi.set_PWM_frequency(motorDirection, pwmFreq)
+  def speed(self, signedSpeed):
+    if signedSpeed >= 0:
+      gpioPi.write(motorDirection,1)
+      gpioPi.set_PWM_dutycycle(motorEnable,signedSpeed)
+    ele:
+      
