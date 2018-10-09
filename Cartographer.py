@@ -1,7 +1,5 @@
 #Top Level
-os.system("sudo pigpiod")
-import pigpio
-import Control
-import Motor
-import Sense
-import Config
+if __name__ == '__main__':
+    # TODO: Launch control, motor, sensor modules.
+    os.system("sudo pigpiod")
+
