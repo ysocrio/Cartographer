@@ -1,31 +1,77 @@
+import pigpio
+
 class Motor:
     """
     A class responsible for defining and controlling motors
     """
 
     def __init__(self, pigpio_object, motor_enable, motor_direction, pwm_range, pwm_freq):
-        self.gpioPi = pigpioObject
+        # Sets up private versions of variables
+        # Pigpio Object
+        self._gpio_pi = pigpio_object
+        self.update_gpio_pi(pigpio_object, motor_enable, motor_direction, pwm_range, pwm_freq)
 
-        # set motor enable/direction to outputs
-        self.gpioPi.set_mode(motor_enable, OUTPUT)
-        self.gpioPi.set_mode(motor_direction, OUTPUT)
+        # Control Variables initialization. NOTE: any further assignments should be done through property setters
+        # i.e, self.motor_direction / self.motor_enable calls.
+        self._motor_direction = motor_direction
+        self._motor_enable = motor_enable
 
-        # set PWM pulsewidth range from 0 to pwmRange
-        self.gpioPi.set_PWM_range(motor_enable, pwm_range)
-        self.gpioPi.set_PWM_range(motor_direction, pwm_range)
 
-        # set PWM Freq
-        self.gpioPi.set_PWM_frequency(motor_enable, pwm_freq)
-        self.gpioPi.set_PWM_frequency(motor_direction, pwm_freq)
+# Property decorators for public variables.
 
-        # Control Variables
-        self.motor_direction = motor_direction
-        self.motor_enable = motor_direction
+    @property
+    def gpio_pi(self):
+        return self._gpio_pi
+
+    @gpio_pi.setter
+    # Throws an exception if  null gpio pi is received.
+    def gpio_pi(self, new_gpio_pi):
+        if not new_gpio_pi:
+            raise Exception("motor.py, gpio_pi.setter(): Null new_gpio_pi received. Can't do that!\n")
+        else:
+            self._gpio_pi = new_gpio_pi
+
+    @property
+    def motor_direction(self):
+        return self._motor_direction
+
+    @motor_direction.setter
+    # Simple setter. Can add initial value checking here if needed.
+    def motor_direction(self, new_motor_direction):
+        self._motor_direction = new_motor_direction
+
+    @property
+    def motor_enable(self):
+        return self._motor_enable
+
+    @motor_enable.setter
+    # Simple setter. Can add initial value checking here if needed.
+    def motor_enable(self, do_motor_enable):
+        self._motor_enable = do_motor_enable
+
+# End property decorators
+
+    # Sets all gpio_pi parameters. Throws exception if gpio_pi is not yet assigned.
+    def update_gpio_pi(self, motor_enable, motor_direction, pwm_range, pwm_freq):
+        if not self.gpio_pi:
+            raise Exception("motor.py, gpio_pi_initialization(): initialization cannot be run with null gpio_pi\n")
+        else:
+            # set motor enable/direction to outputs
+            self.gpio_pi.set_mode(motor_enable, OUTPUT)
+            self.gpio_pi.set_mode(motor_direction, OUTPUT)
+
+            # set PWM pulsewidth range from 0 to pwmRange
+            self.gpio_pi.set_PWM_range(motor_enable, pwm_range)
+            self.gpio_pi.set_PWM_range(motor_direction, pwm_range)
+
+            # set PWM Freq
+            self.gpio_pi.set_PWM_frequency(motor_enable, pwm_freq)
+            self.gpio_pi.set_PWM_frequency(motor_direction, pwm_freq)
 
     def speed(self, signed_speed):
         if signed_speed >= 0:
-            self.gpioPi.write(self.motor_direction, 1)
-            self.gpioPi.set_PWM_dutycycle(self.motor_enable, signed_speed)
+            self.gpio_pi.write(self.motor_direction, 1)
+            self.gpio_pi.set_PWM_dutycycle(self.motor_enable, signed_speed)
         else:
-            self.gpioPi.write(self.motor_direction, 0)
-            self.gpioPi.set_PWM_dutycycle(self.motor_enable, abs(signed_speed))
+            self.gpio_pi.write(self.motor_direction, 0)
+            self.gpio_pi.set_PWM_dutycycle(self.motor_enable, abs(signed_speed))
