@@ -53,25 +53,25 @@ class Motor:
 
     # Sets all gpio_pi parameters. Throws exception if gpio_pi is not yet assigned.
     def update_gpio_pi(self, motor_enable, motor_direction, pwm_range, pwm_freq):
-        if not self.gpio_pi:
+        if not self._gpio_pi:
             raise Exception("motor.py, gpio_pi_initialization(): initialization cannot be run with null gpio_pi\n")
         else:
             # set motor enable/direction to outputs
-            self.gpio_pi.set_mode(motor_enable, OUTPUT)
-            self.gpio_pi.set_mode(motor_direction, OUTPUT)
+            self._gpio_pi.set_mode(motor_enable, pigpio.OUTPUT)
+            self._gpio_pi.set_mode(motor_direction, pigpio.OUTPUT)
 
             # set PWM pulsewidth range from 0 to pwmRange
-            self.gpio_pi.set_PWM_range(motor_enable, pwm_range)
-            self.gpio_pi.set_PWM_range(motor_direction, pwm_range)
+            self._gpio_pi.set_PWM_range(motor_enable, pwm_range)
+            self._gpio_pi.set_PWM_range(motor_direction, pwm_range)
 
             # set PWM Freq
-            self.gpio_pi.set_PWM_frequency(motor_enable, pwm_freq)
-            self.gpio_pi.set_PWM_frequency(motor_direction, pwm_freq)
+            self._gpio_pi.set_PWM_frequency(motor_enable, pwm_freq)
+            self._gpio_pi.set_PWM_frequency(motor_direction, pwm_freq)
 
     def speed(self, signed_speed):
         if signed_speed >= 0:
-            self.gpio_pi.write(self.motor_direction, 1)
-            self.gpio_pi.set_PWM_dutycycle(self.motor_enable, signed_speed)
+            self._gpio_pi.write(self.motor_direction, 1)
+            self._gpio_pi.set_PWM_dutycycle(motor_enable, signed_speed)
         else:
-            self.gpio_pi.write(self.motor_direction, 0)
-            self.gpio_pi.set_PWM_dutycycle(self.motor_enable, abs(signed_speed))
+            self._gpio_pi.write(self.motor_direction, 0)
+            self._gpio_pi.set_PWM_dutycycle(motor_enable, abs(signed_speed))
