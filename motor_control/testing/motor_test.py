@@ -1,7 +1,6 @@
 #written for Python 3 running on Raspberry Pi
 #turns on motors
 
-#test
 
 #libraries used
 import pigpio           #GPIO Daemon/library that controls GPIO (need to instal$
