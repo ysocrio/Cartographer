@@ -6,6 +6,14 @@ import motor_control.config as motor_config
 
 MyPi = pigpio.pi() #create an instance of the pi class called MyPi
 Chasis = Robot.TankChasis(MyPi, motor_config.List_Of_Pins, motor_config.PWM_Range, motor_config.PWM_Frequency)
+pin = 10
+
+def Encode_Func(gpio, level, tick):
+    Encode_Func.step += 1
+Encode_Func.step = 0
+
+MyPi.callback(pin,MyPi.RISING_EDGE,Encode_Func)
+
 Chasis.FrontLeftMotor.speed(100)
 Chasis.FrontRightMotor.speed(-100)
 Chasis.BackLeftMotor.speed(100)
@@ -17,6 +25,7 @@ Chasis.FrontRightMotor.speed(0)
 Chasis.BackLeftMotor.speed(0)
 Chasis.BackRightMotor.speed(0)
 sleep(1)
+print(Encode_Func.step)
 
 Chasis.FrontLeftMotor.speed(-100)
 Chasis.FrontRightMotor.speed(100)
@@ -28,3 +37,4 @@ Chasis.FrontLeftMotor.speed(0)
 Chasis.FrontRightMotor.speed(0)
 Chasis.BackLeftMotor.speed(0)
 Chasis.BackRightMotor.speed(0)
+print(Encode_Func.step)
