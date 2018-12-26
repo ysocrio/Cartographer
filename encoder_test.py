@@ -12,7 +12,7 @@ def Encode_Func(gpio, level, tick):
     Encode_Func.step += 1
 Encode_Func.step = 0
 
-MyPi.callback(pin,MyPi.RISING_EDGE,Encode_Func)
+MyPi.callback(pin,pigpio.RISING_EDGE,Encode_Func)
 
 Chasis.FrontLeftMotor.speed(100)
 Chasis.FrontRightMotor.speed(-100)
