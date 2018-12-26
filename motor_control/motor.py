@@ -71,7 +71,7 @@ class Motor:
     def speed(self, signed_speed):
         if signed_speed >= 0:
             self._gpio_pi.write(self.motor_direction, 1)
-            self._gpio_pi.set_PWM_dutycycle(_motor_enable, signed_speed)
+            self._gpio_pi.set_PWM_dutycycle(self._motor_enable, signed_speed)
         else:
             self._gpio_pi.write(self.motor_direction, 0)
             self._gpio_pi.set_PWM_dutycycle(motor_enable, abs(signed_speed))
