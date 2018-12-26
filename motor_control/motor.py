@@ -9,7 +9,7 @@ class Motor:
         # Sets up private versions of variables
         # Pigpio Object
         self._gpio_pi = pigpio_object
-        self.update_gpio_pi(motor_enable, motor_direction, pwm_range, pwm_freq)
+        self.update_gpio_pi(pigpio_object, motor_enable, motor_direction, pwm_range, pwm_freq)
 
         # Control Variables initialization. NOTE: any further assignments should be done through property setters
         # i.e, self.motor_direction / self.motor_enable calls.
@@ -52,7 +52,7 @@ class Motor:
 # End property decorators
 
     # Sets all gpio_pi parameters. Throws exception if gpio_pi is not yet assigned.
-    def update_gpio_pi(self, motor_enable, motor_direction, pwm_range, pwm_freq):
+    def update_gpio_pi(self, pigpio_object, motor_enable, motor_direction, pwm_range, pwm_freq):
         if not self._gpio_pi:
             raise Exception("motor.py, gpio_pi_initialization(): initialization cannot be run with null gpio_pi\n")
         else:
