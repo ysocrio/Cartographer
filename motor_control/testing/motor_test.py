@@ -8,14 +8,15 @@ from time import sleep  #handles sleep
 
 Mypi = pigpio.pi()  #create an instance of the pi class called MyPi, MyPi will $
 incrementTime = 0.05 #five second ramp up time
-Motor1LeftEn = 5        #Pin 29
-Motor1LeftDir = 6       #Pin 31
-Motor2LeftEn = 13       #Pin 33
-Motor2LeftDir = 19      #Pin 35
+Motor1LeftEn = 13       #Pin 33
+Motor1LeftDir = 5       #Pin 29
+Motor2LeftEn = 19       #Pin 35
+Motor2LeftDir = 6       #Pin 31
 Motor1RightEn = 26      #Pin 37
-Motor1RightDir = 25     #Pin 22
-Motor2RightEn = 8       #Pin 24
+Motor1RightDir = 8      #Pin 24
+Motor2RightEn = 25      #Pin 22
 Motor2RightDir = 7      #Pin 26
+
 
 #prompt for user input to start
 userInput = raw_input("Press Enter To Start Test")
