@@ -28,6 +28,7 @@ Chasis.BackRightMotor.speed(0)
 sleep(1)
 rot = conversion*Encode_Func.step
 print(rot)
+Encode_Func.step = 0
 
 Chasis.FrontLeftMotor.speed(-100)
 Chasis.FrontRightMotor.speed(100)
@@ -39,5 +40,5 @@ Chasis.FrontLeftMotor.speed(0)
 Chasis.FrontRightMotor.speed(0)
 Chasis.BackLeftMotor.speed(0)
 Chasis.BackRightMotor.speed(0)
-rot = conversion*Encode_Func.step
+rot = -conversion*Encode_Func.step
 print(rot)
