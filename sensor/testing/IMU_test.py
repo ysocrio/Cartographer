@@ -19,7 +19,7 @@ READ = 6
 WRITE = 7
 WRITE_MASK = 0b0
 READ_MASK = 0b1
-ST_RESULT_ADDRESS = 0x0F    # in page 0
+ST_RESULT_ADDRESS = 0x36    # in page 0
 
 i2c_bus = pi.bb_i2c_open(SDA, SCL, baud)
 
