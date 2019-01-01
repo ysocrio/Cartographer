@@ -25,7 +25,7 @@ i2c_bus = pi.bb_i2c_open(SDA, SCL, baud)
 
 #things to do
 # 1. check Power On Self Test reg ST_RESULT for a bit set (self test passed)
-print(pi.bb_i2c_zip(SDA, [ADDRESS,0,START,WRITE,1,((i2c_address<<1)|WRITE_MASK),WRITE,1,ST_RESULT_ADDRESS,START,WRITE,1,((i2c_address<<1)|READ_MASK)]),READ,1,STOP)
+print(pi.bb_i2c_zip(SDA, [ADDRESS,0,START,WRITE,1,((i2c_address<<1)|WRITE_MASK),WRITE,1,ST_RESULT_ADDRESS,START,WRITE,1,((i2c_address<<1)|READ_MASK),READ,1,STOP]))
 # 2. run Build in Self Test. Check ST_RESULT.
 # 3. set power mode (optional, defaults to normal)
 # 4. Set calibration values (obtain from IMU_calibration.py)
