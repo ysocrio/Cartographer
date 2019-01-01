@@ -3,7 +3,7 @@ pi = pigpio.pi()
 
 #open an i2c connection to the BNO055
 SDA = 2
-SCAL= 3
+SCL= 3
 baud = 100
 i2c_address = 0x28  #0x29 is alternate if COM3 pin is changed
 #OPR_MODE_reg = ?
