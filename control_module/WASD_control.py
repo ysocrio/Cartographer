@@ -52,6 +52,7 @@ class WASD_control:
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
             #update _previous_time
+            print("test")
             self._previous_time = self._current_time
         finally:
             termios.tcsetattr(0, termios.TCSANOW, old_settings)
