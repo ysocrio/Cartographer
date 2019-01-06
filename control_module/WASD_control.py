@@ -12,20 +12,20 @@ class WASD_control:
         self._key_timeout = .2
         self._previous_time = 0
         self._current_time = 0
+        self.val = [0,0]
 
     def update(self):
         key = 0
         key = self.getch()
-        val = [0,0]
         if key == "w":
-            val = self.forward()
+            self.val = self.forward()
         elif key == "s":
-            val = self.back()
+            self.val = self.back()
         elif key == "a":
-            val = self.left()
+            self.val = self.left()
         elif key == "d":
-            val = self.right()
-        return val
+            self.val = self.right()
+        return self.val
 
     def forward(self):
         return [-50, 50]
