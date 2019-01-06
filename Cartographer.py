@@ -11,7 +11,6 @@ if __name__ == '__main__':
     robot = chasis.TankChasis(MyPi, motor_config.List_Of_Pins, motor_config.PWM_Range, motor_config.PWM_Frequency)
 
     while(1):
-        try:
             [left_speed, right_speed] = controller.update()
             print(left_speed," ", right_speed)
             robot.FrontLeftMotor.speed(left_speed)
