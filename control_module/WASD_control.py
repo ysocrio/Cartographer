@@ -31,10 +31,9 @@ class WASD_control:
         #calculate
         time_since_last_keypress = self._current_time - self._previous_keypress_time
         #check to see if it is a movement keypress
-        key_is_movement = ((key == "w")|(key == "a"|(key == "s")|(key == "d"))
+        key_is_movement = ((key == "w")|(key == "a")|(key == "s")|(key == "d"))
         #if it is, record the time it accured then output to motors
-        key_is_movement
-        if key_is_movement == 1:
+        if key_is_movement:
             self._previous_keypress_time = self._current_time
             if key == "w":
                 self._val = self.forward()
