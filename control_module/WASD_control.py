@@ -26,7 +26,7 @@ class WASD_control:
 #run once per loop to calculate left and right motor speeds at any instance
     def update(self):
         #get the current key pressed, zero if no key is pressed
-        key = self.getch()
+        key = self.get_char()
         #calculate change of time from previous loop
         self._previous_time = self._current_time
         self._current_time = time.time()
@@ -63,9 +63,9 @@ class WASD_control:
     def right(self):
         return [50, 50]
 
-#function that returns a single character, unlike normal getch, this function
-#is nonblocking and returns 0 if there is no input at that time
-    def getch(self):
+#function that returns a single character, this function is nonblocking and
+#returns 0 if there is no input at that time
+    def get_char(self):
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
         old_settings = termios.tcgetattr(sys.stdin)
         new_settings = old_settings[:]
