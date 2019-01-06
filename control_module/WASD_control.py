@@ -67,16 +67,16 @@ class WASD_control:
 #is nonblocking and returns 0 if there is no input at that time
     def getch(self):
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
-        old_settings = termios.tcgetattr(0)
+        old_settings = termios.tcgetattr(sys.stdin)
         new_settings = old_settings[:]
         #settings from: https://stackoverflow.com/questions/21791621/taking-input-from-sys-stdin-non-blocking
         #the termios.ECHO flag results in non blocking values
         new_settings[3] &= ~(termios.ECHO | termios.ICANON)
         try:
-            termios.tcsetattr(0, termios.TCSANOW, new_settings)
+            termios.tcsetattr(sys.stdin, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
             print(ch)
         finally:
-            termios.tcsetattr(0, termios.TCSANOW, old_settings)
+            termios.tcsetattr(sys.stdin, termios.TCSANOW, old_settings)
 
         return ch
