@@ -16,22 +16,38 @@ class WASD_control:
         self._max_speed = max_speed
         self._current_time = 0
         self._previous_time = 0
-        self._val = 0
+        self._previous_keypress_time = 0
+        self._keypress_timeout = .2
+        self._val = [0,0]
 
+#run once per loop to calculate left and right motor speeds at any instance
     def update(self):
+        #get the current key pressed, zero if no key is pressed
         key = self.getch()
-        if key == "w":
-            self._val = self.forward()
-        elif key == "s":
-            self._val = self.back()
-        elif key == "a":
-            self._val = self.left()
-        elif key == "d":
-            self._val = self.right()
-        else:
+        #calculate change of time from previous loop
+        self._previous_time = self._current_time
+        self._current_time = time.time()
+        elapsed_time = self._current_time - self._previous_time
+        #calculate
+        time_since_last_keypress = self._current_time - self._previous_keypress_time
+        #check to see if it is a movement keypress
+        key_is_movement = ((key == "w")|(key == "a"|(key == "s")|(key == "d"))
+        #if it is, record the time it accured then output to motors
+        if key_is_movement:
+            self._previous_keypress_time = self._current_time
+            if key == "w":
+                self._val = self.forward()
+            elif key == "s":
+                self._val = self.back()
+            elif key == "a":
+                self._val = self.left()
+            elif key == "d":
+                self._val = self.right()
+        elif time_since_last_keypress >= self._keypress_timeout:
             self._val = [0,0]
         return self._val
 
+#functions that run for each selected direction
     def forward(self):
         return [-50, 50]
 
@@ -44,6 +60,8 @@ class WASD_control:
     def right(self):
         return [50, 50]
 
+#function that returns a single character, unlike normal getch, this function
+#is nonblocking and returns 0 if there is no input at that time
     def getch(self):
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
         old_settings = termios.tcgetattr(0)
