@@ -16,7 +16,7 @@ class WASD_control:
     def update(self):
         key = 0
         key = self.getch()
-        return val = [0,0]
+        val = [0,0]
         if key == "w":
             val = self.forward()
         elif key == "s":
