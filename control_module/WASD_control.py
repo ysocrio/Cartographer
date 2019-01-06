@@ -17,7 +17,7 @@ class WASD_control:
         self._current_time = 0
         self._previous_time = 0
         self._previous_keypress_time = 0
-        self._keypress_timeout = .2
+        self._keypress_timeout = .4
         self._val = [0,0]
 
 #run once per loop to calculate left and right motor speeds at any instance
