@@ -40,9 +40,6 @@ class WASD_control:
         return [50, 50]
 
     def getch(self):
-        #update timekeeping variables
-        self._current_time = time.clock()
-        self._elapsed_time = self._current_time - self._previous_time
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
         old_settings = termios.tcgetattr(0)
         new_settings = old_settings[:]
@@ -51,14 +48,7 @@ class WASD_control:
         try:
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
-            #update _previous_time
-            self._previous_time = self._current_time
         finally:
             termios.tcsetattr(0, termios.TCSANOW, old_settings)
 
-        #check to see that a key has not been pressed in the last _key_timeout seconds
-        if self._elapsed_time >= self._key_timeout:
-            ch = 0
-        #if a key has been pressed in the last _key_timeout seconds, ch is the
-        #pressed key, otherwise ch is zero
         return ch
