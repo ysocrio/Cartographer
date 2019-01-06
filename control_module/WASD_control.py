@@ -24,8 +24,8 @@ class WASD_control:
             return self.left()
         elif key == "d":
             return self.right()
-        else:
-            return [0,0]
+        #else:
+        #    return [0,0]
 
     def forward(self):
         return [-50, 50]
