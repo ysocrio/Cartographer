@@ -44,5 +44,5 @@ class WASD_control:
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
         finally:
-            ch = null
+            ch = 0
         return ch
