@@ -48,12 +48,11 @@ class WASD_control:
         old_settings = termios.tcgetattr(0)
         new_settings = old_settings[:]
         new_settings[3] &= ~termios.ICANON
-        print("loop")
         try:
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
+            print("test")
             #update _previous_time
-            "test"
             self._previous_time = self._current_time
         finally:
             termios.tcsetattr(0, termios.TCSANOW, old_settings)
