@@ -76,10 +76,6 @@ class WASD_control:
         new_settings[6][termios.VTIME] = 0 # cc
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, new_settings)
         try:
-            #ch = sys.stdin.read(1)
             ch = os.read(sys.stdin.fileno(), 1)
-            print(ch)
-        finally:
-            termios.tcsetattr(sys.stdin, termios.TCSANOW, old_settings)
 
         return ch
