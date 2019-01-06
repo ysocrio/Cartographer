@@ -48,10 +48,8 @@ class WASD_control:
         new_settings = old_settings[:]
         #settings from: https://stackoverflow.com/questions/21791621/taking-input-from-sys-stdin-non-blocking
         new_settings[3] &= ~(termios.ECHO | termios.ICANON)
-        new_settings[6][termios.VMIN] = 0  # cc
-        new_settings[6][termios.VTIME] = 0 # cc
         try:
-            termios.tcsetattr(sys.stdin, termios.TCSADRAIN, new_settings)
+            termios.tcsetattr(0, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
             #update _previous_time
             self._previous_time = self._current_timew
