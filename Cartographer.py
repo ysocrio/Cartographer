@@ -12,6 +12,7 @@ if __name__ == '__main__':
 
     while(1):
         [left_speed, right_speed] = controller.update()
+        print(left_speed," ", right_speed)
         robot.FrontLeftMotor.speed(left_speed)
         robot.FrontRightMotor.speed(right_speed)
         robot.BackLeftMotor.speed(left_speed)
