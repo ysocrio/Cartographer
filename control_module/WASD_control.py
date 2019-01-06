@@ -7,15 +7,17 @@ class WASD_control:
     #max time between key presses before it turns motor off
 
 
-    def __init__(self):
+    def __init__(self, max_speed):
         #intial stuffs
-        self._key_timeout = .2
-        self._previous_time = 0
+        self._acceleration = 10
+        self._deceleration = 25
+        self._left_speed = 0
+        self._right_speed = 0
+        self._max_speed = max_speed
         self._current_time = 0
-        self.val = [0,0]
+        self._previous_time = 0
 
     def update(self):
-        key = 0
         key = self.getch()
         if key == "w":
             self.val = self.forward()
@@ -46,6 +48,7 @@ class WASD_control:
         old_settings = termios.tcgetattr(0)
         new_settings = old_settings[:]
         #settings from: https://stackoverflow.com/questions/21791621/taking-input-from-sys-stdin-non-blocking
+        #the termios.ECHO flag results in non blocking values
         new_settings[3] &= ~(termios.ECHO | termios.ICANON)
         try:
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
