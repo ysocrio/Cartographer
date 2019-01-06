@@ -5,3 +5,4 @@ if __name__ == '__main__':
     controller = control.WASD_control()
     while(1):
         a = controller.getch()
+        print(a)
