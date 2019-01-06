@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     while(1):
         [left_speed, right_speed] = controller.update()
-        Chasis.FrontLeftMotor.speed(left_speed)
-        Chasis.FrontRightMotor.speed(right_speed)
-        Chasis.BackLeftMotor.speed(left_speed)
-        Chasis.BackRightMotor.speed(right_speed)
+        robot.FrontLeftMotor.speed(left_speed)
+        robot.FrontRightMotor.speed(right_speed)
+        robot.BackLeftMotor.speed(left_speed)
+        robot.BackRightMotor.speed(right_speed)
