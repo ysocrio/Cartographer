@@ -10,6 +10,7 @@ class WASD_control:
         pass
 
     def update(self):
+        key = 0
         key = self.getch()
         if key == "w":
             return self.forward()
@@ -23,16 +24,16 @@ class WASD_control:
             return [0,0]
 
     def forward(self):
-        return [15, -15]
+        return [50, -50]
 
     def back(self):
-        return [-15, 15]
+        return [-50, 50]
 
     def left(self):
-        return [-15,-15]
+        return [-50,-50]
 
     def right(self):
-        return [15, 15]
+        return [50, 50]
 
     def getch(self):
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
