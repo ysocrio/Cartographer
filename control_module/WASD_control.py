@@ -1,4 +1,4 @@
-import sys, tty, termios, time
+import sys, tty, termios, time, os
 
 class WASD_control:
     """
