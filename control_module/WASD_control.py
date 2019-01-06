@@ -50,8 +50,7 @@ class WASD_control:
         new_settings[3] &= ~termios.ICANON
         try:
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
-            print("test")
-            ch = sys.stdin.read(1)
+            ch = sys.stdin.read()
             #update _previous_time
             self._previous_time = self._current_time
         finally:
