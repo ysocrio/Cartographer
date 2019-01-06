@@ -11,7 +11,7 @@ class WASD_control:
 
     def getch(self):
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
-        old_settings = termios.tcgetatter(0)
+        old_settings = termios.tcgetattr(0)
         new_settings = old_settings[:]
         new_settings[3] &= ~termios.ICANON
         try:
