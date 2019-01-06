@@ -8,7 +8,7 @@ if __name__ == '__main__':
 
     MyPi = pigpio.pi() #create an instance of the pi class called MyPi
     controller = control.WASD_control()
-    robot = tank_chasis.Tank_Chasis(MyPi, motor_config.List_Of_Pins, motor_config.PWM_Range, motor_config.PWM_Frequency)
+    robot = chasis.Tank_Chasis(MyPi, motor_config.List_Of_Pins, motor_config.PWM_Range, motor_config.PWM_Frequency)
 
     while(1):
         [left_speed, right_speed] = controller.update()
