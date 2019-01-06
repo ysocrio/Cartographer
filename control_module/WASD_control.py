@@ -72,8 +72,10 @@ class WASD_control:
         #settings from: https://stackoverflow.com/questions/21791621/taking-input-from-sys-stdin-non-blocking
         #the termios.ECHO flag results in non blocking values
         new_settings[3] &= ~(termios.ECHO | termios.ICANON)
+        new_settings[6][termios.VMIN] = 0  # cc
+        new_settings[6][termios.VTIME] = 0 # cc
+        termios.tcsetattr(sys.stdin, termios.TCSADRAIN, new_settings)
         try:
-            print("test")
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
         finally:
