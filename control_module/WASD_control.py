@@ -17,8 +17,11 @@ class WASD_control:
         self._current_time = 0
         self._previous_time = 0
         self._previous_keypress_time = 0
-        self._keypress_timeout = .4
+        self._keypress_timeout = .1
         self._val = [0,0]
+        #prompt user about changing keyboard settings
+        print("change keyboard settings to have a short repeat delay")
+        print("on windows go to control panel -> keyboard -> repeat delay")
 
 #run once per loop to calculate left and right motor speeds at any instance
     def update(self):
