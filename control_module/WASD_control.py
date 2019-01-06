@@ -43,7 +43,7 @@ class WASD_control:
         #update timekeeping variables
         self._current_time = time.clock()
         self._elapsed_time = self._current_time - self._previous_time
-        print(time.clock())
+        print(self._elapsed_time)
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
         old_settings = termios.tcgetattr(0)
         new_settings = old_settings[:]
