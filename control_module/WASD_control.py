@@ -21,16 +21,16 @@ class WASD_control:
     def update(self):
         key = self.getch()
         if key == "w":
-            self.val = self.forward()
+            self._val = self.forward()
         elif key == "s":
-            self.val = self.back()
+            self._val = self.back()
         elif key == "a":
-            self.val = self.left()
+            self._val = self.left()
         elif key == "d":
-            self.val = self.right()
+            self._val = self.right()
         else:
-            val = [0,0]
-        return self.val
+            self._val = [0,0]
+        return self._val
 
     def forward(self):
         return [-50, 50]
