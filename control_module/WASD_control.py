@@ -18,15 +18,14 @@ class WASD_control:
         key = self.getch()
         return val = [0,0]
         if key == "w":
-            return val = self.forward()
+            val = self.forward()
         elif key == "s":
-            return val = self.back()
+            val = self.back()
         elif key == "a":
-            return val = self.left()
+            val = self.left()
         elif key == "d":
-            return val = self.right()
-        else:
-            return val
+            val = self.right()
+        return val
 
     def forward(self):
         return [-50, 50]
