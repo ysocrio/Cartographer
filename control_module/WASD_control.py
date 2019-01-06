@@ -9,6 +9,29 @@ class WASD_control:
         #intial stuffs
         pass
 
+    def update(self):
+        key = self.getch()
+        if key == "w":
+            self.w()
+        elif key == "s":
+            self.s()
+        elif key == "a":
+            self.a()
+        elif key == "d":
+            self.d()
+
+    def w(self):
+        print("w")
+
+    def s(self):
+        print("s")
+
+    def a(self):
+        print("a")
+
+    def d(self):
+        print("d")
+
     def getch(self):
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
         old_settings = termios.tcgetattr(0)
