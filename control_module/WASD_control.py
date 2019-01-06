@@ -24,10 +24,10 @@ class WASD_control:
             return [0,0]
 
     def forward(self):
-        return [50, -50]
+        return [-50, 50]
 
     def back(self):
-        return [-50, 50]
+        return [50, -50]
 
     def left(self):
         return [-50,-50]
@@ -44,5 +44,5 @@ class WASD_control:
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
         finally:
-            termios.tcsetattr(0, termios.TCSANOW, old_settings)
+            ch = null
         return ch
