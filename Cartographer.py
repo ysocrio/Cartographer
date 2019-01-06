@@ -4,4 +4,4 @@ if __name__ == '__main__':
     import control_module.WASD_control as control
     controller = control.WASD_control()
     while(1):
-        print(controller.getch())
+        a = controller.getch()
