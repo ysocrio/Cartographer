@@ -75,6 +75,7 @@ class WASD_control:
         try:
             termios.tcsetattr(0, termios.TCSANOW, new_settings)
             ch = sys.stdin.read(1)
+            print(ch)
         finally:
             termios.tcsetattr(0, termios.TCSANOW, old_settings)
 
