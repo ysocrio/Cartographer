@@ -12,25 +12,27 @@ class WASD_control:
     def update(self):
         key = self.getch()
         if key == "w":
-            self.w()
+            return self.forward()
         elif key == "s":
-            self.s()
+            return self.back()
         elif key == "a":
-            self.a()
+            return self.left()
         elif key == "d":
-            self.d()
+            return self.right()
+        else:
+            return [0,0]
 
-    def w(self):
-        print("w")
+    def forward(self):
+        return [15, -15]
 
-    def s(self):
-        print("s")
+    def back(self):
+        return [-15, 15]
 
-    def a(self):
-        print("a")
+    def left(self):
+        return [-15,-15]
 
-    def d(self):
-        print("d")
+    def right(self):
+        return [15, 15]
 
     def getch(self):
         # found here: https://www.raspberrypi.org/forums/viewtopic.php?p=513526
